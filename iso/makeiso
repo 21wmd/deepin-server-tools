@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mkisofs -o ../Deepin-15_64-20170222.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T .

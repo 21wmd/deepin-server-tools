@@ -1,0 +1,16 @@
+#!/bin/sh
+# mkdeepin - Deepin 的服务器 ISO 构建工具
+# 王明栋（21wmd）<wangmd21@gmail.com>
+
+source ./etc/init.sh
+
+case $1 in
+    isoinit)
+        init
+        isoinit
+        ;;
+    rpminit)
+        init
+        rpminit
+        ;;
+esac

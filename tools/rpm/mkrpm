@@ -1,23 +1,27 @@
 #!/bin/sh
 
-for i in {1..2172}
+mkrpm () {
 
-do
+    for i in {1..2721}
 
-    line=$i'p'
-    name=$(sed -n "$line" ~/make/rpm/list) 
-    mock -r deepin-15-x86_64 /data/SPackages/$name --resultdir=/data/tmp/packages
-    files='ls /data/tmp/packages | grep rpm'
-    if [ -z "$files" ]; then
-        echo $name >> ~/make/rpm/fail
-        mkdir ~/make/rpm/message/$name
-        cp /data/tmp/packages/*.log ~/make/rpm/message/$name/
-    else
-        echo $name >> ~/make/rpm/successful
-        mv /data/tmp/packages/*.rpm /data/Packages/
-    fi
-    echo $i >> ~/make/rpm/history-num
-    echo $name >> ~/make/rpm/history-rpm
-    rm /data/tmp/packages/*
+    do
 
-done
+        line=$i'p'
+        name=$(sed -n "$line" ./etc/rpmlist) 
+        mock -r deepin-15-x86_64 $spackages_dir/$name --resultdir=$packages_tmp_dir
+        files=$(ls $packages_tmp_dir | grep rpm)
+        if [ -z "$files" ]; then
+            echo $name >> ./log/rpm-fail
+            mkdir ./log/rpm-message/$name
+            cp /data/tmp/packages/*.log ./log/rpm-message/$name/
+        else
+            echo $name >> ./log/successful
+            mv $packages_tmp_dir/*.rpm $packages_dir/
+        fi
+        echo $i >> ./log/history-num
+        echo $name >> ./log/history-rpm
+        rm $packages_tmp_dir/*
+
+    done
+
+}

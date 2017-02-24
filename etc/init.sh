@@ -19,4 +19,5 @@ isoinit () {
 
 rpminit () {
     sudo yum install rpmdevtools mock
+    sudo cp ./etc/deepin-15-x86_64.cfg /etc/mock/
 }

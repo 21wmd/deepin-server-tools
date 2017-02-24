@@ -23,4 +23,7 @@ case $1 in
     mkiso)
         mkiso
         ;;
+    mkrpm)
+        mkrpm
+        ;;
 esac

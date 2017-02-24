@@ -1,5 +1,11 @@
 #!/bin/sh
 
+cpiso () {
+    sudo mount -o loop $ISO_PATH /mnt
+    rsync -a --exclude=Packages/ --exclude=repodata/ /mnt/ $dvdiso/
+    mkdir -p $dvdiso/{Packages,repodata}
+}
+
 mkiso () {
 
     if [`rpm-qa | grep genisoimage | wc -l` -ne 0 ]; then

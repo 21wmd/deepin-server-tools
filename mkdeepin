@@ -3,6 +3,10 @@
 # 王明栋（21wmd）<wangmd21@gmail.com>
 
 source ./etc/init.sh
+source ./etc/deepin.conf
+source ./tools/iso/mkiso
+source ./tools/rpm/mkrpm
+source ./tools/src/mksrc
 
 case $1 in
     isoinit)
@@ -12,5 +16,11 @@ case $1 in
     rpminit)
         init
         rpminit
+        ;;
+    cpiso)
+        cpiso
+        ;;
+    mkiso)
+        mkiso
         ;;
 esac

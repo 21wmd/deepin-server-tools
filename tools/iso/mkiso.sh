@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cpiso () {
     sudo mount -o loop $ISO_PATH /mnt

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 init () {
     directory=$(cd .. ; pwd)
@@ -11,6 +11,9 @@ init () {
     dvdiso=$directory/archive/dvdiso/
 
     isodate=$(date +%Y_%m_%d_%R)
+
+    sudo rpm -i $directory/server-tools/etc/epel-release-latest-6.noarch.rpm
+
 }
 
 isoinit () {
@@ -18,6 +21,6 @@ isoinit () {
 }
 
 rpminit () {
-    sudo yum install rpmdevtools mock
+    sudo yum install rpmdevtools mock -y
     sudo cp ./etc/deepin-15-x86_64.cfg /etc/mock/
 }

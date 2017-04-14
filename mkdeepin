@@ -1,14 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 # mkdeepin - Deepin 的服务器 ISO 构建工具
 # 王明栋（21wmd）<wangmd21@gmail.com>
 
-source ./etc/init.sh
-source ./etc/deepin.conf
-source ./tools/iso/mkiso
-source ./tools/rpm/mkrpm
-source ./tools/src/mksrc
+[ -f etc/init.sh ] && . etc/init.sh
+[ -f etc/deepin.conf ] && . etc/deepin.conf
+[ -f tools/iso/mkiso.sh ] && . tools/iso/mkiso.sh
+[ -f tools/rpm/mkrpm.sh ] && . tools/rpm/mkrpm.sh
+[ -f tools/src/mksrc.sh ] && . tools/src/mksrc.sh
 
 case $1 in
+    init)
+        init
+        ;;
     isoinit)
         init
         isoinit

@@ -13,6 +13,8 @@ init () {
     isodate=$(date +%Y_%m_%d_%R)
 
     sudo rpm -i $directory/server-tools/etc/epel-release-latest-6.noarch.rpm
+    sudo yum clean all
+    sudo yum makecache
 
 }
 

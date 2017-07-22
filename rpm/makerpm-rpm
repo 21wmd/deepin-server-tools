@@ -7,7 +7,7 @@ do
     line=$i'p'
     name=$(sed -n "$line" ~/make/rpm/list) 
     mock -r deepin-15-x86_64 /data/SPackages/$name --resultdir=/data/tmp/packages
-    files='ls /data/tmp/packages | grep rpm'
+    files=`ls /data/tmp/packages | grep rpm`
     if [ -z "$files" ]; then
         echo $name >> ~/make/rpm/fail
         mkdir ~/make/rpm/message/$name

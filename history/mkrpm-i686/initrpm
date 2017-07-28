@@ -1,0 +1,9 @@
+
+#!/bin/sh
+
+rm -f ~/dev/data/SPackages/*
+rm -f ~/dev/data/Packages/*
+rm -f ~/dev/tmp/packages/*
+rm -rf ~/dev/log/*
+rm -rf ~/dev/log/*
+touch ~/dev/log/{fail,history-num,history-rpm,successful}

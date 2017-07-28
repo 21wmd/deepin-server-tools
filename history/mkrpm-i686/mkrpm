@@ -1,0 +1,24 @@
+#!/bin/sh
+
+for i in {901..1000}
+
+do
+
+    line=$i'p'
+    name=$(sed -n "$line" ~/dev/filelist)
+    wget -P ~/dev/data/SPackages/ http://10.1.10.21/server-dev/dsee-15-amd64/main/$name
+    mock -r deepin-15-i386 ~/dev/data/SPackages/$name --resultdir=~/dev/data/tmp/packages
+    files=`ls ~/dev/data/tmp/packages | grep rpm`
+    if [ -z "$files" ]; then
+        echo $name >> ~/dev/log/fail
+        mkdir ~/dev/log/$name
+        cp ~/dev/data/tmp/packages/*.log ~/dev/log/$name/
+    else
+        echo $name >> ~/dev/log/successful
+        mv ~/dev/data/tmp/packages/*.rpm ~/dev/data/Packages/
+    fi
+    echo $i >> ~/dev/log/history-num
+    echo $name >> ~/dev/log/history-rpm
+    rm -f ~/dev/data/tmp/packages/*
+
+done
